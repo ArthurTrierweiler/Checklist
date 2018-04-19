@@ -1,0 +1,9 @@
+<H1>
+  EDITAR TAREFA
+</H1>
+<%=form_tag(action:'update', method:'get') do %>
+<%= label_tag(:description,'descrição')%>
+<%=text_field_tag(:description, @task.description)%>
+<%=hidden_field_tag(:id, @task.id)%>
+<%=submit_tag('atualizar')%>
+<%end%>

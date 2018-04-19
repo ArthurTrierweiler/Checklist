@@ -1,0 +1,26 @@
+<h1>Grêmio faz mais um 4x0</h1>
+<p>Gauchao é nosso</p>
+
+<%Task.all.each do |task| %>
+<p>
+  <%= task.description%> | 
+  <%= task.finished ? 'fechada':'aberta' %>'
+  <% unless task.finished? %>
+    <%= link_to 'fechar', action: :finished, params: {id: task.id } %>
+  <% else %>
+  <%= link_to 'abrir', action: :open, params: {id: task.id } %>
+  <% end %>
+  <%= link_to 'delete', action: :delete, params: {id: task.id } %>
+  <%= link_to 'edit', action: :edit, params: {id: task.id } %>
+  
+</p>
+<%end%>
+
+<H1>
+  CADASTRAR TAREFA
+</H1>
+<%=form_tag(action:'create', method:'get') do %>
+  <%= label_tag(:description,'descrição')%>
+  <%=text_field_tag(:description)%>
+  <%=submit_tag('cadastrar')%>
+<%end%>
